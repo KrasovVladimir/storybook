@@ -1,0 +1,7 @@
+
+
+const themeConfig = {
+
+}
+
+export { themeConfig }
