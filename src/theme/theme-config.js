@@ -1,7 +1,0 @@
-
-
-const themeConfig = {
-
-}
-
-export { themeConfig }
