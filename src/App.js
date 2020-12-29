@@ -1,10 +1,11 @@
 import { RegistrationPage } from './pages/registration-page'
+import { StepOnePage } from './pages/step-one-page'
 
 
 function App() {
   return (
-      <RegistrationPage/>
-  );
+      <StepOnePage/>
+  )
 }
 
 export default App;

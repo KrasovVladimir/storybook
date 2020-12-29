@@ -109,12 +109,37 @@ const themeConfig = {
       },
     },
     MuiTypography: {
+      h2: {
+        fontFamily: 'Open Sans',
+        fontSize: '2.5rem',
+        letterSpacing: '0.4px',
+        lineHeight: 1,
+        fontWeight: 300,
+      },
       h3: {
         fontFamily: 'Open Sans',
         fontSize: '1.5rem',
         color: COLOR_NAMES.black,
         lineHeight: 1.333,
         fontWeight: 300,
+      },
+      h4: {
+        fontFamily: 'Open Sans',
+        fontSize: '1.25rem',
+        color: COLOR_NAMES.black,
+        lineHeight: 1.5,
+      },
+      h5: {
+        fontFamily: 'Open Sans',
+        fontSize: '1rem',
+        color: COLOR_NAMES.darkestGrey,
+        lineHeight: 1.5,
+      },
+      h6: {
+        fontFamily: 'Open Sans',
+        fontSize: '0.9375rem',
+        color: COLOR_NAMES.darkestGrey,
+        lineHeight: 1.5,
       },
     },
 
