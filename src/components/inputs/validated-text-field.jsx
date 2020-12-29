@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const ValidatedTextField = ({ value, validated }) => {
+const ValidatedTextField = ({ onChange, value, validated }) => {
   const classes = useStyles()
 
   return (
@@ -24,6 +24,7 @@ const ValidatedTextField = ({ value, validated }) => {
       <TextField
         variant="outlined"
         label={'Email address'}
+        onChange={onChange}
         value={value}
         InputLabelProps={{
           shrink: true,

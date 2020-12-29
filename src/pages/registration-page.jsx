@@ -12,7 +12,7 @@ import { LogoPageHeadline } from '../components/logo-page/logo-page-headline'
 import { CommonButton } from '../components/buttons/common-button'
 import { NameTextField } from '../components/inputs/name-text-field'
 import { PasswordInput } from '../components/inputs/password-input'
-import { EmailTextField } from '../components/inputs/validated-text-field'
+import { ValidatedTextField } from '../components/inputs/validated-text-field'
 
 
 const useStyles = makeStyles(theme => ({
@@ -74,11 +74,13 @@ const RegistrationPage = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [password, updatePassword] = useState('')
- 
+  const [email, setEmail] = useState('')
   const [strongPassword, setStrongPassword] = useState(false)
 
+  const validEmail = 'address@mail.com' 
+
   useEffect(() => {
-      setEmail('meltem.tester@gmx-topmail.de')
+    setEmail(validEmail)
   }, [])
 
   return (
@@ -130,8 +132,12 @@ const RegistrationPage = () => {
             </Grid>
   
           <Grid item className={classes.formItem}>
-            <EmailTextField
+            <ValidatedTextField
+              onChange={(event) => {
+                setEmail(event.target.value)
+              }}
               value={email}
+              validated={email === validEmail ? true : false }
             />
           </Grid>
 
