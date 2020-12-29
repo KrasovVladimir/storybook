@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   },
   buttons: {
     display: 'flex',
-    justifyContent: 'space-beetwen',
+    justifyContent: 'space-between',
     marginTop: '2rem',
     width: '12rem',
   }
