@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography/index'
 import { makeStyles } from '@material-ui/styles'
 
 import { LogoPageHeadline } from '../components/logo-page/logo-page-headline'
-import { PrimaryButton } from '../components/buttons/common-button'
+import { CommonButton } from '../components/buttons/common-button'
 import { NameTextField } from '../components/inputs/name-text-field'
 import { PasswordInput } from '../components/inputs/password-input'
 import { EmailTextField } from '../components/inputs/email-text-field'
@@ -101,39 +101,34 @@ const RegistrationPage = () => {
             className={classes.verificationForm}
             onSubmit={() => {}}
           >
-        <Grid
-          container
-          spacing={1}
-          direction="column"
-          className={classes.spacer}
-        >
-          <Grid item className={classes.formItem}>
-            <Grid
-              container
-              spacing={1}
-            >
-              <Grid item className={classes.nameItem}>
-                <NameTextField
-                  label={'First name'}
-                  value={firstName}
-                  onChange={(event) => {
-                    setFirstName(event.target.value)
-                  }}
-                />
-              </Grid>
-
-              <Grid item className={classes.nameItem}>
-                <NameTextField
-                    label={'Last name'}
-                    value={lastName}
+          <Grid
+            container
+            spacing={1}
+            direction="column"
+            className={classes.spacer}
+          >
+            <Grid item className={classes.formItem}>
+                <Grid item className={classes.nameItem}>
+                  <NameTextField
+                    label={'First name'}
+                    value={firstName}
                     onChange={(event) => {
-                      setLastName(event.target.value)
+                      setFirstName(event.target.value)
                     }}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
+                  />
+                </Grid>
 
+                <Grid item className={classes.nameItem}>
+                  <NameTextField
+                      label={'Last name'}
+                      value={lastName}
+                      onChange={(event) => {
+                        setLastName(event.target.value)
+                      }}
+                  />
+                </Grid>
+            </Grid>
+  
           <Grid item className={classes.formItem}>
             <EmailTextField
               value={email}
@@ -156,13 +151,13 @@ const RegistrationPage = () => {
               </FormHelperText>
             </FormControl>
           </Grid>
-          <PrimaryButton
+          <CommonButton
             className={classes.submit}
             type="submit"
             disabled={!strongPassword}
           >
             {'Create account'}
-          </PrimaryButton>
+          </CommonButton>
         </Grid>
       </form>
         </div>
