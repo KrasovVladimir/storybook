@@ -16,12 +16,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const ValidatedTextField = ({ onChange, value, validated }) => {
+const ValidatedTextField = ({ onChange, value, errorText }) => {
   const classes = useStyles()
 
   return (
     <FormControl margin="normal" fullWidth>
       <TextField
+        error={errorText}
+        helperText={errorText}
         variant="outlined"
         label={'Email address'}
         onChange={onChange}
@@ -29,7 +31,7 @@ const ValidatedTextField = ({ onChange, value, validated }) => {
         InputLabelProps={{
           shrink: true,
         }}
-        InputProps={validated && {
+        InputProps={!errorText && {
           endAdornment: (
             <InputAdornment position="end">
               <Icon

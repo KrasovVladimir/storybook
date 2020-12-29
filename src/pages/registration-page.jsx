@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import DocumentTitle from 'react-document-title'
 
 import FormControl from '@material-ui/core/FormControl/index'
@@ -77,11 +77,24 @@ const RegistrationPage = () => {
   const [email, setEmail] = useState('')
   const [strongPassword, setStrongPassword] = useState(false)
 
-  const validEmail = 'address@mail.com' 
+  const validEmail = 'address@mail.com'
 
   useEffect(() => {
     setEmail(validEmail)
   }, [])
+
+  const getValidateEmailText = useCallback(() => {
+      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      const v = re.test(email)
+      console.log(v)
+      if (v) {
+        return null
+      } else {
+        return 'Incorrect email.'
+      }
+  }, [email, setEmail])
+
+
 
   return (
     <DocumentTitle title={'Signup'}>
@@ -137,7 +150,7 @@ const RegistrationPage = () => {
                 setEmail(event.target.value)
               }}
               value={email}
-              validated={email === validEmail ? true : false }
+              errorText={getValidateEmailText()}
             />
           </Grid>
 
