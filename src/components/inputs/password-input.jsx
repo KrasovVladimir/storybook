@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const PasswordInput = ({ onChange, value }) => {
+const PasswordInput = ({ onChange, value,  ...props }) => {
   const classes = useStyles()
 
   const [showPassword, setShowPassword] = useState(false)
@@ -53,6 +53,7 @@ const PasswordInput = ({ onChange, value }) => {
       InputLabelProps={{
         shrink: true,
       }}
+      {...props}
     />
   )
 }
