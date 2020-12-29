@@ -2,16 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from '@material-ui/core'
 
-const PrimaryButton = ({
-  children, 
+const CommonButton = ({
+  children,
+  secondary,
   size, 
   ...props
 }) => {
 
   return (
     <Button
-      variant="contained"
-      color="primary"
+      variant={secondary ? "outlined" : "contained"}
+      color={secondary ? "secondary" : "primary"}
       {...props}
       size={size}
     >
@@ -20,16 +21,17 @@ const PrimaryButton = ({
   )
 }
 
-PrimaryButton.propTypes = {
+CommonButton.propTypes = {
   children: PropTypes.node,
   size: PropTypes.string,
   className: PropTypes.string,
 }
 
-PrimaryButton.defaultProps = {
+CommonButton.defaultProps = {
   children: undefined,
+  secondary: false,
   size: undefined,
   className: undefined,
 }
 
-export { PrimaryButton }
+export { CommonButton }

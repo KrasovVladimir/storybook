@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography/index'
 import { makeStyles } from '@material-ui/styles'
 
 import { LogoPageHeadline } from '../components/logo-page/logo-page-headline'
-import { PrimaryButton } from '../components/buttons/primary-button'
+import { PrimaryButton } from '../components/buttons/common-button'
 import { NameTextField } from '../components/inputs/name-text-field'
 import { PasswordInput } from '../components/inputs/password-input'
 import { EmailTextField } from '../components/inputs/email-text-field'

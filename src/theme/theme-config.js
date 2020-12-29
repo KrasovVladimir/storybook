@@ -9,6 +9,7 @@ const COLOR_NAMES = {
   black: '#11141C',
   blue: '#527BFE',
   green: '#0ED08F',
+  white: '#FFFFFF',
 }
 
 const themeConfig = {
@@ -22,6 +23,9 @@ const themeConfig = {
     },
     primary: {
       main: COLOR_NAMES.blue,
+    },
+    secondary: {
+      main: COLOR_NAMES.darkGrey,
     },
     colors: COLOR_NAMES,
   },
@@ -42,6 +46,27 @@ const themeConfig = {
         '&$disabled': {
           backgroundColor: COLOR_NAMES.lightGrey,
           color: COLOR_NAMES.lightestGrey,
+        },
+      },
+      outlined: {
+        padding: '10.5px 24px',
+        fontSize: '1rem',
+        fontWeight: 600,
+        textAlign: 'center',
+        lineHeight: '24px',
+        color: COLOR_NAMES.darkGrey,
+        backgroundColor: COLOR_NAMES.white,
+        border: `1px solid ${COLOR_NAMES.lightGrey}`,
+        '&$disabled': {
+          backgroundColor: COLOR_NAMES.white,
+          color: COLOR_NAMES.grey,
+        },
+        '&:hover': {
+          backgroundColor: COLOR_NAMES.nearWhite,
+        },
+        '&:active': {
+          borderColor: COLOR_NAMES.grey,
+          backgroundColor: COLOR_NAMES.nearWhite,
         },
       },
     },
