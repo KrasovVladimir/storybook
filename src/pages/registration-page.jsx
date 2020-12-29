@@ -12,7 +12,7 @@ import { LogoPageHeadline } from '../components/logo-page/logo-page-headline'
 import { CommonButton } from '../components/buttons/common-button'
 import { NameTextField } from '../components/inputs/name-text-field'
 import { PasswordInput } from '../components/inputs/password-input'
-import { EmailTextField } from '../components/inputs/email-text-field'
+import { EmailTextField } from '../components/inputs/validated-text-field'
 
 
 const useStyles = makeStyles(theme => ({
@@ -74,7 +74,7 @@ const RegistrationPage = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [password, updatePassword] = useState('')
-  const [email, setEmail] = useState('')
+ 
   const [strongPassword, setStrongPassword] = useState(false)
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import FormControl from '@material-ui/core/FormControl/index'
 import TextField from '@material-ui/core/TextField'
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const EmailTextField = ({ value }) => {
+const ValidatedTextField = ({ value, validated }) => {
   const classes = useStyles()
 
   return (
@@ -28,9 +28,7 @@ const EmailTextField = ({ value }) => {
         InputLabelProps={{
           shrink: true,
         }}
-        readOnly
-        InputProps={{
-          disabled: true,
+        InputProps={validated && {
           endAdornment: (
             <InputAdornment position="end">
               <Icon
@@ -47,14 +45,14 @@ const EmailTextField = ({ value }) => {
   )
 }
 
-EmailTextField.propTypes = {
+ValidatedTextField.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
 }
 
-EmailTextField.defaultProps = {
+ValidatedTextField.defaultProps = {
   onChange: () => {},
   value: undefined,
 }
 
-export { EmailTextField }
+export { ValidatedTextField }
