@@ -34,7 +34,7 @@ const ValidatedTextField = ({ label, onChange, value, onValidate }) => {
   }, [value, onValidate, succes, setSucces])
 
   useEffect(() => {
-    if (value !== undefined) {
+    if (onValidate && value !== undefined) {
       validate()
     }
   }, [])
@@ -47,7 +47,7 @@ const ValidatedTextField = ({ label, onChange, value, onValidate }) => {
         variant="outlined"
         label={label}
         onChange={onChange}
-        onBlur={validate}
+        onBlur={onValidate && validate}
         value={value}
         InputLabelProps={{
           shrink: true,

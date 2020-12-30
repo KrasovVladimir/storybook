@@ -113,25 +113,25 @@ const RegistrationPage = () => {
             className={classes.spacer}
           >
             <Grid item className={classes.formItem}>
-                <Grid item className={classes.nameItem}>
-                  <NameTextField
-                    label={'First name'}
-                    value={firstName}
-                    onChange={(event) => {
-                      setFirstName(event.target.value)
-                    }}
-                  />
-                </Grid>
+              <Grid item className={classes.formItem}>
+                <ValidatedTextField
+                  label={'First name'}
+                  onChange={(event) => {
+                    setFirstName(event.target.value)
+                  }}
+                  value={firstName}
+                />
+              </Grid>
 
-                <Grid item className={classes.nameItem}>
-                  <NameTextField
-                      label={'Last name'}
-                      value={lastName}
-                      onChange={(event) => {
-                        setLastName(event.target.value)
-                      }}
-                  />
-                </Grid>
+              <Grid item className={classes.formItem}>
+                <ValidatedTextField
+                  label={'Last name'}
+                  onChange={(event) => {
+                    setLastName(event.target.value)
+                  }}
+                  value={lastName}
+                />
+              </Grid>
             </Grid>
   
           <Grid item className={classes.formItem}>
