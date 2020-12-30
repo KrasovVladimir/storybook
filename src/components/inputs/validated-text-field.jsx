@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import FormControl from '@material-ui/core/FormControl/index'
 import TextField from '@material-ui/core/TextField'
@@ -32,6 +32,12 @@ const ValidatedTextField = ({ label, onChange, value, onValidate }) => {
       setSucces(true)
     }
   }, [value, onValidate, succes, setSucces])
+
+  useEffect(() => {
+    if (value !== undefined) {
+      validate()
+    }
+  }, [])
 
   return (
     <FormControl margin="normal" fullWidth>

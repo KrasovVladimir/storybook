@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
     paddingTop: '4rem',
   },
   paper: {
-    width: '100%',
     maxWidth: `${theme.spacing(80)}px`,
     marginTop: theme.spacing(8),
     marginLeft: 'auto',
@@ -36,10 +35,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: `${theme.spacing(2)}px ${theme.spacing(14)}px ${theme.spacing(3)}px`,
-    [theme.breakpoints.down('xs')]: {
-      padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
-    },
   },
   headline: {
     marginTop: `${theme.spacing(4)}px`,
@@ -58,9 +53,6 @@ const useStyles = makeStyles(theme => ({
   formItem: {
     width: '100%',
   },
-  nameItem: {
-    flexGrow: 1,
-  },
   passwordHelperText: {
     display: 'flex',
     alignItems: 'center',
@@ -71,10 +63,10 @@ const useStyles = makeStyles(theme => ({
 const RegistrationPage = () => {
   const classes = useStyles()
 
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [password, updatePassword] = useState('')
-  const [email, setEmail] = useState('')
+  const [firstName, setFirstName] = useState()
+  const [lastName, setLastName] = useState()
+  const [password, updatePassword] = useState()
+  const [email, setEmail] = useState()
   const [strongPassword, setStrongPassword] = useState(false)
 
   const emailValidate = (email) => {

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 
 import TextField from '@material-ui/core/TextField'
 import Visibility from '@material-ui/icons/Visibility'
@@ -29,6 +29,12 @@ const PasswordInput = ({ onChange, value, onValidate,  ...props }) => {
       setError(null)
     }
   }, [value, onValidate])
+
+  useEffect(() => {
+    if (value !== undefined) {
+      validate()
+    }
+  }, [])
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword)
