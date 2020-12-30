@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import DocumentTitle from 'react-document-title'
 
 import FormControl from '@material-ui/core/FormControl/index'
@@ -69,7 +69,7 @@ const RegistrationPage = () => {
   const [email, setEmail] = useState()
   const [strongPassword, setStrongPassword] = useState(false)
 
-  const emailValidate = (email) => {
+  const emailValidate = useCallback((email) => {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     const v = re.test(String(email).toLowerCase());
     if (!v) {
@@ -79,17 +79,17 @@ const RegistrationPage = () => {
       return 'Email address is already registered'
     } 
     return null
-  }
+  }, [email])
 
-  const passwordValidate = (password) => {
-    if (password.length < 8) {
+  const passwordValidate = useCallback((password) => {
+    if (!password || password.length < 8) {
       return 'Password must contain at least 8 characters.'
     }
     if (password !== '12345678') {
       return 'Invalid password'
     } 
     return null
-  }
+  }, [password])
   
   return (
     <DocumentTitle title={'Signup'}>
