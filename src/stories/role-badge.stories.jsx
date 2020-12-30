@@ -25,4 +25,6 @@ roleBadge.args = {
     color: '#ff0000',
     name: 'Role',
   },
+  onEditRole: () => {},
+  onDeleteRole: () => {},
 }
