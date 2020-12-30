@@ -18,8 +18,15 @@ const Template = (args) => {
   )
 }
 
-export const validatedTextField = Template.bind({})
-validatedTextField.args = {
+export const noValidate = Template.bind({})
+noValidate.args = {
+  label: 'Text',
+  value: 'text',
+  onValidate: null,
+}
+
+export const validated= Template.bind({})
+validated.args = {
   label: 'Validate',
   value: 'valid text',
   onValidate: (value) => {
