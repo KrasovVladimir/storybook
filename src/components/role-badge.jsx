@@ -6,8 +6,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     position: 'relative',
     margin: theme.spacing(0.5),
-    paddingLeft: theme.spacing(1.5),
-    paddingRight: theme.spacing(1.5),
+    padding: theme.spacing(1),
     transition: '.5s',
     borderStyle: 'solid',
     borderWidth: '1px',
