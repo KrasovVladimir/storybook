@@ -88,6 +88,16 @@ const RegistrationPage = () => {
     } 
     return null
   }
+
+  const passwordValidate = (password) => {
+    if (password.length < 8) {
+      return 'Password must contain at least 8 characters.'
+    }
+    if (password !== '12345678') {
+      return 'Invalid password'
+    } 
+    return null
+  }
   
   return (
     <DocumentTitle title={'Signup'}>
@@ -156,6 +166,7 @@ const RegistrationPage = () => {
                   setStrongPassword(event.target.value ? true : false)
                 }}
                 value={password}
+                onValidate={passwordValidate}
               />
               <FormHelperText
                 className={classes.passwordHelperText}
