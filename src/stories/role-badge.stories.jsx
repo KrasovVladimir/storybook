@@ -20,6 +20,7 @@ const Template = (args) => {
 
 export const roleBadge = Template.bind({})
 roleBadge.args = {
+  isActive: false,
   role: {
     color: '#ff0000',
     name: 'Role',

@@ -129,7 +129,11 @@ const StepFourPage = () => {
                           </IconButton>
                         ),
                         endAdornment: (
-                            <KeyboardArrowDownIcon/>
+                          <IconButton
+                          onClick={addRole}
+                        >
+                          <KeyboardArrowDownIcon/>
+                        </IconButton>
                         ),
                       }}
                     />

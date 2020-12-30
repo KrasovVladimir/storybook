@@ -17,10 +17,12 @@ const useStyles = makeStyles(theme => ({
   },
   active: {
     display: 'flex',
-    justifyContent: 'space-beetwen'
+    justifyContent: 'space-beetwen',
   },
-  menuIcon: {
+  menuIconButton: {
     color: theme.palette.colors.blue,
+    margin: 0,
+    padding: 0,
   },
 }))
 
@@ -67,35 +69,36 @@ const RoleBadge = ({
       {role.name}
       {isActive && (
         <IconButton
+          className={classes.menuIconButton}
           size='small'
           onClick={handleClickOpenMenu}
         >
-          <MoreVertIcon className={classes.menuIcon}/>
+          <MoreVertIcon />
         
         </IconButton>
       )}
-        <Menu
-            id="lock-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={!!anchorEl}
-            onClose={handleClose}
-          >
-            <MenuItem
-              key={'0'}
-              disabled={false}
-              onClick={(event) => handleMenuItemClick(event, 0)}
-            >
-              Edit role
-            </MenuItem>
-            <MenuItem
-              key={'1'}
-              disabled={false}
-              onClick={(event) => handleMenuItemClick(event, 1)}
-            >
-              Delete role
-            </MenuItem>
-          </Menu>
+      <Menu
+        id="lock-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={!!anchorEl}
+        onClose={handleClose}
+      >
+        <MenuItem
+           key={'0'}
+           disabled={false}
+           onClick={(event) => handleMenuItemClick(event, 0)}
+        >
+          Edit role
+        </MenuItem>
+        <MenuItem
+          key={'1'}
+           disabled={false}
+           onClick={(event) => handleMenuItemClick(event, 1)}
+         >
+          Delete role
+         </MenuItem>
+      </Menu>
     </div>
   )
 }
