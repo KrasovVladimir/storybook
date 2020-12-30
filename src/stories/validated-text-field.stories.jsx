@@ -20,6 +20,13 @@ const Template = (args) => {
 
 export const validatedTextField = Template.bind({})
 validatedTextField.args = {
-  value: 'addres@mail.com',
-  validated: false,
+  label: 'Validate',
+  value: 'valid text',
+  onValidate: (value) => {
+    if (value !== '') {
+      return null
+    } else {
+      return 'Empthy field'
+    }
+  },
 }
