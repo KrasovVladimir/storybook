@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     borderStyle: 'solid',
     borderWidth: '1px',
     width: 'fit-content',
+    height: '2.5rem',
   },
   active: {
     display: 'flex',
