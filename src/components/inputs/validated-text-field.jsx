@@ -28,7 +28,6 @@ const ValidatedTextField = ({ onChange, value, onValidate }) => {
     if (!v) {
       setError('Incorrect email.')
       setSucces(false)
-      return
     } else {
       setError(null)
       setSucces(true)
