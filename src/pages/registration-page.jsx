@@ -76,6 +76,18 @@ const RegistrationPage = () => {
   const [password, updatePassword] = useState('')
   const [email, setEmail] = useState('')
   const [strongPassword, setStrongPassword] = useState(false)
+
+  const emailValidate = (email) => {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const v = re.test(String(email).toLowerCase());
+    if (!v) {
+      return 'Incorrect email.'
+    }
+    if (email === '123@mail.com') {
+      return 'Email address is already registered'
+    } 
+    return null
+  }
   
   return (
     <DocumentTitle title={'Signup'}>
@@ -127,17 +139,12 @@ const RegistrationPage = () => {
   
           <Grid item className={classes.formItem}>
             <ValidatedTextField
+              label={'Email addres'}
               onChange={(event) => {
                 setEmail(event.target.value)
               }}
               value={email}
-              onValidate={(email) => {
-                if (email === '123@mail.com') {
-                  return 'Email address is already registered'
-                } else {
-                  return null
-                }
-              }}
+              onValidate={emailValidate}
             />
           </Grid>
 

@@ -9,35 +9,29 @@ import CheckCircle from '@material-ui/icons/CheckCircleOutline'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles((theme) => ({
-  emailCheckCircle: {
+  checkCircle: {
     zIndex: 1,
     color: theme.palette.colors.green,
   },
 }))
 
 
-const ValidatedTextField = ({ onChange, value, onValidate }) => {
+const ValidatedTextField = ({ label, onChange, value, onValidate }) => {
   const classes = useStyles()
 
   const [error, setError] = useState(null)
   const [succes, setSucces] = useState(false)
 
-  const validateEmail = useCallback(() => {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    const v = re.test(String(value).toLowerCase());
-    if (!v) {
-      setError('Incorrect email.')
+  const validate = useCallback(() => {
+    const errorMessage = onValidate(value)
+    if (errorMessage) {
+      setError(errorMessage)
       setSucces(false)
     } else {
       setError(null)
       setSucces(true)
     }
-    const errorMessage = onValidate(value)
-    if (errorMessage) {
-      setError(errorMessage)
-      setSucces(false)
-    } 
-  }, [value, setError, onValidate])
+  }, [value, onValidate, succes, setSucces])
 
   return (
     <FormControl margin="normal" fullWidth>
@@ -45,9 +39,9 @@ const ValidatedTextField = ({ onChange, value, onValidate }) => {
         error={!!error}
         helperText={error}
         variant="outlined"
-        label={'Email address'}
+        label={label}
         onChange={onChange}
-        onBlur={validateEmail}
+        onBlur={validate}
         value={value}
         InputLabelProps={{
           shrink: true,
@@ -56,8 +50,8 @@ const ValidatedTextField = ({ onChange, value, onValidate }) => {
           endAdornment: (
             <InputAdornment position="end">
               <Icon
-                aria-label="Email address valid"
-                className={classes.emailCheckCircle}
+                aria-label="valid"
+                className={classes.checkCircle}
               >
                 <CheckCircle />
               </Icon>
