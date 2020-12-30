@@ -106,11 +106,6 @@ const RegistrationPage = () => {
           >
             {'Create your account'}
           </Typography>
-
-          <form
-            className={classes.verificationForm}
-            onSubmit={() => {}}
-          >
           <Grid
             container
             spacing={1}
@@ -171,11 +166,11 @@ const RegistrationPage = () => {
             className={classes.submit}
             type="submit"
             disabled={!strongPassword}
+            onClick={() => {}}
           >
             {'Create account'}
           </CommonButton>
         </Grid>
-      </form>
         </div>
       </Paper>
       </div>
