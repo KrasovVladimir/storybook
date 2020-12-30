@@ -10,15 +10,22 @@ export default {
   component: PasswordInput,
 }
 
-const Template = () => {
+const Template = (args) => {
   return (
     <ThemeProviders>
-      <PasswordInput
-        onChange={() => {}}
-        value={'password'}
-      />
+      <PasswordInput {...args} />
     </ThemeProviders>
   )
 }
 
 export const passwordInput = Template.bind({})
+passwordInput.args = {
+  value: '12345',
+  onValidate: (value) => {
+    if (value === '12345') {
+      return null
+    } else {
+      return 'Invalid password'
+    }
+  },
+}

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import TextField from '@material-ui/core/TextField'
 import Visibility from '@material-ui/icons/Visibility'
@@ -15,10 +15,20 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const PasswordInput = ({ onChange, value,  ...props }) => {
+const PasswordInput = ({ onChange, value, onValidate,  ...props }) => {
   const classes = useStyles()
 
   const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState(null)
+
+  const validate = useCallback(() => {
+    const errorMessage = onValidate(value)
+    if (errorMessage) {
+      setError(errorMessage)
+    } else {
+      setError(null)
+    }
+  }, [value, onValidate])
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword)
@@ -26,6 +36,8 @@ const PasswordInput = ({ onChange, value,  ...props }) => {
 
   return (
     <TextField
+      error={!!error}
+      helperText={error}
       variant="outlined"
       fullWidth
       required
@@ -33,6 +45,7 @@ const PasswordInput = ({ onChange, value,  ...props }) => {
       label={'Password'}
       placeholder={'Password'}
       onChange={onChange}
+      onBlur={validate}
       value={value}
       InputProps={{
         endAdornment: (
@@ -61,6 +74,7 @@ const PasswordInput = ({ onChange, value,  ...props }) => {
 PasswordInput.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
+  onValidate: PropTypes.func,
 }
 
 PasswordInput.defaultProps = {
