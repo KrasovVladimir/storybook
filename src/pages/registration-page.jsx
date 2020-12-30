@@ -76,6 +76,7 @@ const RegistrationPage = () => {
   const [password, updatePassword] = useState('')
   const [email, setEmail] = useState('')
   const [strongPassword, setStrongPassword] = useState(false)
+  
   return (
     <DocumentTitle title={'Signup'}>
       <div className={classes.main}>
@@ -130,7 +131,6 @@ const RegistrationPage = () => {
                 setEmail(event.target.value)
               }}
               value={email}
-              errorText={emailError}
               onValidate={(email) => {
                 if (email === '123@mail.com') {
                   return 'Email address is already registered'

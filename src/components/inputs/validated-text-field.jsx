@@ -16,10 +16,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const ValidatedTextField = ({ onChange, value, errorMessage, onValidate }) => {
+const ValidatedTextField = ({ onChange, value, onValidate }) => {
   const classes = useStyles()
 
-  const [error, setError] = useState(errorMessage)
+  const [error, setError] = useState(null)
   const [succes, setSucces] = useState(false)
 
   const validateEmail = useCallback(() => {
@@ -73,14 +73,12 @@ const ValidatedTextField = ({ onChange, value, errorMessage, onValidate }) => {
 ValidatedTextField.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
-  errorMessage: PropTypes.string,
   onValidate: PropTypes.func,
 }
 
 ValidatedTextField.defaultProps = {
   onChange: () => {},
   value: undefined,
-  errorMessage: null,
 }
 
 export { ValidatedTextField }
