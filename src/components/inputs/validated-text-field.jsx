@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useMemo } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import FormControl from '@material-ui/core/FormControl/index'
 import TextField from '@material-ui/core/TextField'
@@ -16,22 +16,44 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const ValidatedTextField = ({ onChange, value, errorText }) => {
+const ValidatedTextField = ({ onChange, value, errorMessage, onValidate }) => {
   const classes = useStyles()
+
+  const [error, setError] = useState(errorMessage)
+  const [succes, setSucces] = useState(false)
+
+  const validateEmail = useCallback(() => {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const v = re.test(String(value).toLowerCase());
+    if (!v) {
+      setError('Incorrect email.')
+      setSucces(false)
+      return
+    } else {
+      setError(null)
+      setSucces(true)
+    }
+    const errorMessage = onValidate(value)
+    if (errorMessage) {
+      setError(errorMessage)
+      setSucces(false)
+    } 
+  }, [value, setError, onValidate])
 
   return (
     <FormControl margin="normal" fullWidth>
       <TextField
-        error={errorText}
-        helperText={errorText}
+        error={!!error}
+        helperText={error}
         variant="outlined"
         label={'Email address'}
         onChange={onChange}
+        onBlur={validateEmail}
         value={value}
         InputLabelProps={{
           shrink: true,
         }}
-        InputProps={!errorText && {
+        InputProps={succes && {
           endAdornment: (
             <InputAdornment position="end">
               <Icon
@@ -51,11 +73,14 @@ const ValidatedTextField = ({ onChange, value, errorText }) => {
 ValidatedTextField.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
+  errorMessage: PropTypes.string,
+  onValidate: PropTypes.func,
 }
 
 ValidatedTextField.defaultProps = {
   onChange: () => {},
   value: undefined,
+  errorMessage: null,
 }
 
 export { ValidatedTextField }

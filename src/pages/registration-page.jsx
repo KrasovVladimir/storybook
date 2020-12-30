@@ -76,26 +76,6 @@ const RegistrationPage = () => {
   const [password, updatePassword] = useState('')
   const [email, setEmail] = useState('')
   const [strongPassword, setStrongPassword] = useState(false)
-
-  const validEmail = 'address@mail.com'
-
-  useEffect(() => {
-    setEmail(validEmail)
-  }, [])
-
-  const getValidateEmailText = useCallback(() => {
-      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      const v = re.test(email)
-      console.log(v)
-      if (v) {
-        return null
-      } else {
-        return 'Incorrect email.'
-      }
-  }, [email, setEmail])
-
-
-
   return (
     <DocumentTitle title={'Signup'}>
       <div className={classes.main}>
@@ -150,7 +130,14 @@ const RegistrationPage = () => {
                 setEmail(event.target.value)
               }}
               value={email}
-              errorText={getValidateEmailText()}
+              errorText={emailError}
+              onValidate={(email) => {
+                if (email === '123@mail.com') {
+                  return 'Email address is already registered'
+                } else {
+                  return null
+                }
+              }}
             />
           </Grid>
 

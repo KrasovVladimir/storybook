@@ -5,7 +5,7 @@ import { StepTwoPage } from './pages/step-two-page'
 
 function App() {
   return (
-      <StepTwoPage />
+      <RegistrationPage />
   )
 }
 
